@@ -33,7 +33,10 @@
 #include<time.h>
 #include <sys/time.h>
 
+#include <iostream>
+#include <fstream>
 #include <sstream>
+
 #include"fstream"
 #include "iostream"
 #include "graphHOST.h"
