@@ -82,10 +82,10 @@ int main(int argc, char** argv) {
 		std::cout<<"No input graph provided, creating a sample graph"<<std::endl;
 
 	// Read Graph in  host memory
-	//GraphHOST input_graph(argv[1], file_w, type);
+	GraphHOST input_graph(argv[1], file_w, type);
 
 	//Create a graph in host memory
-	GraphHOST input_graph; // Sample graph
+	/*GraphHOST input_graph; // Sample graph
 	if (1) {
 
 		input_graph.nb_nodes = 7;
@@ -98,7 +98,7 @@ int main(int argc, char** argv) {
 		unsigned int edges[] = {1, 2, 3, 0, 0, 0, 4, 5, 3, 5, 3, 4, 6, 5};
 		std::copy(edges, edges + input_graph.nb_links, input_graph.links.begin());
 
-	}
+	}*/
 
 	input_graph.display();
 
