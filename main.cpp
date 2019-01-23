@@ -59,6 +59,7 @@ int main(int argc, char** argv) {
 	if (!existing_file) {
 		logFile << "GraphName" << "," << "Total Time" << "," << "Modularity" << std::endl;
 	}
+	string graphName = argv[1];
 
 
 	std::cout << "#Args: " << argc << std::endl;
@@ -223,7 +224,7 @@ int main(int argc, char** argv) {
 	double elapsed_time = ((end_comm.tv_sec*1000 + (end_comm.tv_nsec/1.0e6)) - (start_comm.tv_sec*1000 + (start_comm.tv_nsec/1.0e6)));
 
 	time(&time_end);
-	logFile<<argv[1].substr (5, argv[1].length-4)<<","<<elapsed_time<<","<<prev_mod<<std::endl;
+	logFile<<graphName.substr (5, graphName.length-4)<<","<<elapsed_time<<","<<prev_mod<<std::endl;
 
 	t2 = clock();
 	float diff = ((float) t2 - (float) t1);
