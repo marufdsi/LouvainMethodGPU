@@ -20,6 +20,9 @@
     
     */
 
+#include <string>
+#include <iostream>
+
 #include "thrust/device_vector.h"
 #include <thrust/host_vector.h>
 #include <thrust/device_vector.h>
@@ -30,7 +33,7 @@
 #include<time.h>
 #include <sys/time.h>
 
-
+#include <sstream>
 #include"fstream"
 #include "iostream"
 #include "graphHOST.h"
