@@ -4,7 +4,7 @@ CUDAVERSION=8.0
 
 CC=/usr/local/cuda-$(CUDAVERSION)/bin/nvcc 
 CPP = g++
-CFLAGS= -I/usr/local/cuda-$(CUDAVERSION)/include -O3 
+CFLAGS= -I/usr/local/cuda-$(CUDAVERSION)/include -O3 -std=c++11
 
 
 DFLAGS= -D RUNONGPU
