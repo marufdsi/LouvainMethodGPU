@@ -26,6 +26,10 @@
 #include <thrust/copy.h>
 #include <algorithm>
 
+#include <chrono>
+#include<time.h>
+#include <sys/time.h>
+
 
 #include"fstream"
 #include "iostream"
@@ -40,6 +44,16 @@ int main(int argc, char** argv) {
 
 	char* file_w = NULL;
 	int type = UNWEIGHTED;
+
+	ofstream logFile;
+	string logFileName = "Log/louvain_method_gpu_runtime_and_modularity.csv";
+	ifstream infile(logFileName);
+	bool existing_file = infile.good();
+	logFile.open(logFileName, ios_base::out | ios_base::app | ios_base::ate);
+	if (!existing_file) {
+		logFile << "GraphName" << "," << "Total Time" << "," << "Modularity" << std::endl;
+	}
+
 
 	std::cout << "#Args: " << argc << std::endl;
 	for (int i = 0; i < argc; i++) {
@@ -109,6 +123,11 @@ int main(int argc, char** argv) {
 
 	clock_t t1, t2, t3;
 	t1 = clock();
+
+	time_t time_begin, time_end;
+	time(&time_begin);
+	struct timespec start_comm, end_comm;
+	clock_gettime(CLOCK_MONOTONIC, &start_comm);
 
 	/*			
 				dev_community.preProcess();
@@ -192,7 +211,13 @@ int main(int argc, char** argv) {
 		//improvement = false;
 	} while (true);
 
-	std::cout<< "#phase: "<<stepID<<std::endl; 
+	std::cout<< "#phase: "<<stepID<<std::endl;
+
+	clock_gettime(CLOCK_MONOTONIC, &end_comm);
+	double elapsed_time = ((end_comm.tv_sec*1000 + (end_comm.tv_nsec/1.0e6)) - (start_comm.tv_sec*1000 + (start_comm.tv_nsec/1.0e6)));
+
+	time(&time_end);
+	logFile<<argv[1]<<","<<elapsed_time<<","<<prev_mod<<std::endl;
 
 	t2 = clock();
 	float diff = ((float) t2 - (float) t1);
