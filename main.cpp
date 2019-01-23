@@ -44,7 +44,7 @@
 #include "communityGPU.h"
 #include"list"
 
-
+using namespace std;
 int main(int argc, char** argv) {
 
 
