@@ -178,7 +178,7 @@ int main(int argc, char** argv) {
 		//break;
 		std::cout << "Computed modularity: " << cur_mod << " ( init_mod = " << prev_mod << " ) " << std::endl;
 
-		if ((cur_mod - prev_mod) > threshold) {
+		if ((cur_mod - prev_mod) > threshold && stepID<=12) {
 
 			t2 = clock();   
 			t3 = t2;
