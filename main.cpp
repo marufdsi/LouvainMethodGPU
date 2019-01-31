@@ -153,6 +153,7 @@ int main(int argc, char** argv) {
 		std::cout<<"\n Update method: Jacobi\n";
 
 	int stepID = 1;
+	int max_iteration = 33;
 
 	do {
 
@@ -178,7 +179,7 @@ int main(int argc, char** argv) {
 		//break;
 		std::cout << "Computed modularity: " << cur_mod << " ( init_mod = " << prev_mod << " ) " << std::endl;
 
-		if ((cur_mod - prev_mod) > threshold && stepID<=12) {
+		if ((cur_mod - prev_mod) > threshold && stepID<=max_iteration) {
 
 			t2 = clock();   
 			t3 = t2;
